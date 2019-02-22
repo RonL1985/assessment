@@ -55,9 +55,9 @@ $rock = new todo(
 var_dump($rock);
 
 /**
- * Small Cross Section of a author
+ * Small Cross Section of a todo
  *
- * This author can be considered a small example of object oriented phase 1 assigment. when author are used in object oriented. This can easily be extended to emulate more feature of object oriented.
+ * This todo can be considered a small example of assessment. when todo are used in assessment. This can easily be extended to emulate more feature of assessment.
  *
  * @author Ronald Luna <ronaldluna1@gmail.com
  * @version 1
