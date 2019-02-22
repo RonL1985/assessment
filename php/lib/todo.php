@@ -11,11 +11,10 @@ require_once(dirname(__DIR__, 2) . "/vendor/autoload.php");
 /*
 simplified attribute names:
 	todoId
-	todoAvatarUrl
-	todoActivationToken
-	todoEmail
-	todoHash
-	todoUsername
+	todoAuthor
+	todoDate
+	todoTask
+
 */
 /**
  * New Todo Generator
@@ -69,40 +68,35 @@ class todo {
 	 **/
 	private $todoId;
 	/** url of the todo that left this question
-	 * @var string $todoAvatarUrl
+	 * @var string $todoAuthor
 	 **/
-	private $todoAvatarUrl;
+	private $todoAuthor;
 	/** Nickname of this todo/user
-	 * @var string $todoActivationToken
+	 * @var string $todoDate
 	 **/
-	private $todoActivationToken;
+	private $todoDate;
 	/**
 	 * Email linked to this todo,
-	 * @var string $todoEmail
+	 * @var string $todoTask
 	 **/
-	private $todoEmail;
-	/** Username of this todo/username
-	 * @var string $todoUsername
-	 **/
-	private $todoUsername;
+	private $todoTask;
+
 	/**
 	 * @param Uuid $newTodoId
-	 * @param $newTodoAvatarUrl
-	 * @param $newTodoActivationToken
-	 * @param $newTodoEmail
-	 * @param $newTodoUsername
+	 * @param $newTodoAuthor
+	 * @param $newTodoDate
+	 * @param $newTodoTask
 	 * @throws InvalidArgumentException
 	 * @throws RangeException
 	 * @throws Exception
 	 * @throws TypeError
 	 **/
-	public function _construct(string $newTodoId, string $newTodoAvatarUrl, string $newTodoActivationToken, string $newTodoEmail, string $newTodoUsername) {
+	public function _construct(string $newTodoId, string $newTodoAuthor, string $newTodoDate, string $newTodoTask) {
 		try {
 			$this->setTodoId($newTodoId);
-			$this->setTodoAvatarUrl($newTodoAvatarUrl);
-			$this->setTodoActivationToken($newTodoActivationToken);
-			$this->setTodoEmail($newTodoEmail);
-			$this->setTodoUsername($newTodoUsername);
+			$this->setTodoAvatarUrl($newTodoAuthor);
+			$this->setTodoActivationToken($newTodoDate);
+			$this->setTodoEmail($newTodoTask);
 		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
 			$exceptionType = get_class($exception);
 			throw (new $exceptionType($exception->getMessage(), 0, $exception)) ;
@@ -134,102 +128,77 @@ class todo {
 		$this->todoId = $Uuid;
 	}
 	/**
-	 * accessor method for todo Avatar Url
+	 * accessor method for todo Author
 	 *
-	 * @return string value of todo Avatar Url
+	 * @return string value of todo Author
 	 **/
-	public function getTodoAvatarUrl() : string {
-		return($this->todoAvatarUrl);
+	public function getTodoAuthor() : string {
+		return($this->todoAuthor);
 	}
 	/**
-	 * mutator method for todo Avatar Url
+	 * mutator method for todo Author
 	 *
-	 * @param string | string $newTodoAvatarUrl new value of Todo Avatar Url
-	 * @throws \ InvalidArgumentException if $newTodoAvatarUrl is not a string or insecure
-	 * @throws \TypeError if @newTodoAvatarUrl is not an string
+	 * @param string | string $newTodoAvatarUrl new value of Todo Author
+	 * @throws \ InvalidArgumentException if $newTodoAuthor is not a string or insecure
+	 * @throws \TypeError if @newTodoAuthor is not an string
 	 **/
-	public function setTodoAvatarUrl( $newTodoAvatarUrl) : void {
+	public function setTodoAuthor($newTodoAuthor) : void {
 		try {
-			$string = self::validateString($newTodoAvatarUrl);
+			$string = self::validateString($newTodoAuthor);
 		} catch(\InvalidArgumentException | \Exception | \TypeError $exception) {
 			$exceptionType = get_class($exception);
 			throw(new $exceptionType($exception->getMessage(),0,$exception));
 		}
 		// convert and store the todo id
-		$this-> todoAvatarUrl = $string;
+		$this-> todoAuthor = $string;
 	}
 	/**
-	 * accessor method for todo ActivationToken
+	 * accessor method for todo Date
 	 *
-	 * @return string value of todo ActivationToken
+	 * @return string value of todo Date
 	 **/
-	public function getTodoActivationToken() : string {
-		return($this->todoActivationToken);
+	public function getTodoDate() : string {
+		return($this->todoDate);
 	}
 	/**
-	 * mutator method for todo ActivationToken
+	 * mutator method for todo Date
 	 *
-	 * @param string | string $newTodoActivationToken new value of todo ActivationToken
-	 * @throws \ InvalidArgumentException if $newTodoActivationToken is not a string or insecure
-	 * @throws \TypeError if @newTodoActivationToken is not an string
+	 * @param string | string $newTodoDate new value of todo Date
+	 * @throws \ InvalidArgumentException if $newTodoDate is not a string or insecure
+	 * @throws \TypeError if @newTodoDate is not an string
 	 **/
-	public function setTodoActivationToken( $newTodoActivationToken) : void {
+	public function setTodoDate( $newTodoDate) : void {
 		try {
-			$string = self::validateString($newTodoActivationToken);
+			$string = self::validateString($newTodoDate);
 		} catch(\InvalidArgumentException | \Exception | \TypeError $exception) {
 			$exceptionType = get_class($exception);
 			throw(new $exceptionType($exception->getMessage(),0,$exception));
 		}
 		// convert and store the todo id
-		$this-> todoActivationToken = $string;
+		$this-> todoDate = $string;
 	}
 	/**
-	 * accessor method for todo Email
+	 * accessor method for todo Task
 	 *
-	 * @return string value of todo Email
+	 * @return string value of todo Task
 	 **/
-	public function getTodoEmail() : string {
-		return($this->todoEmail);
+	public function getTodoTask() : string {
+		return($this->todoTask);
 	}
 	/**
-	 * mutator method for todo Email
+	 * mutator method for todo Task
 	 *
-	 * @param string | string $newTodoEmail new value of todo Email
-	 * @throws \ InvalidArgumentException if $newtodoEmail is not a string or insecure
-	 * @throws \TypeError if @newTodoEmail is not an string
+	 * @param string | string $newTodoEmail new value of todo Task
+	 * @throws \ InvalidArgumentException if $newtodoTask is not a string or insecure
+	 * @throws \TypeError if @newTodoTask is not an string
 	 **/
-	public function setTodoEmail( $newTodoEmail) : void {
+	public function setTodoTask( $newTodoTask) : void {
 		try {
-			$string = self::validateString($newTodoEmail);
+			$string = self::validateString($newTodoTask);
 		} catch(\InvalidArgumentException | \Exception | \TypeError $exception) {
 			$exceptionType = get_class($exception);
 			throw(new $exceptionType($exception->getMessage(),0,$exception));
 		}
 		// convert and store the todo id
-		$this-> todoEmail = $string;
-	}
-	/**
-	 * accessor method for todo Username
-	 *
-	 * @return string value of todo Username
-	 **/
-	public function getTodoUsername() : string {
-		return($this->todoUsername);
-	}
-	/**
-	 * mutator method for todo Username
-	 *
-	 * @param string | string $newTodoUsername new value of todo Username
-	 * @throws \ InvalidArgumentException if $newTodoUsername is not a string or insecure
-	 * @throws \TypeError if @newTodoUsername is not an string
-	 **/
-	public function setTodoUsername( $newTodoUsername) : void {
-		try {
-			$string = self::validateString($newTodoUsername);
-		} catch(\InvalidArgumentException | \Exception | \TypeError $exception) {
-			$exceptionType = get_class($exception);
-			throw(new $exceptionType($exception->getMessage(),0,$exception));
-		}
-		// convert and store the todo id
-		$this-> todoUsername = $string;
-	}
+		$this-> todoTask = $string;
+	}}

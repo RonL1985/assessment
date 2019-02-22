@@ -10,13 +10,13 @@ DROP TABLE IF EXISTS todo;
 -- the CREATE TABLE function is a function that takes tons of arguments to layout the table's schema
 create table author(
 todoId binary(16) not null,
-todoAvatarUrl varchar(255),
-todoActivationToken char(32),
-todoEmail varchar(128) not null,
+todovAuthor varchar(255),
+tododate char(32),
+todotask varchar(128) not null,
 todoHash char(97) not null,
 todoUsername varchar(32) not null,
-unique(todoEmail),
-unique(todoUsername),
-INDEX(todoEmail),
+unique(todoAuthor),
+unique(todoDate),
+INDEX(todoTask),
 primary key(todoId)
 );
