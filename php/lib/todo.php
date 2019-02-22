@@ -138,7 +138,7 @@ class todo {
 	/**
 	 * mutator method for todo Author
 	 *
-	 * @param string | string $newTodoAvatarUrl new value of Todo Author
+	 * @param string | string $newTodoAuthor new value of Todo Author
 	 * @throws \ InvalidArgumentException if $newTodoAuthor is not a string or insecure
 	 * @throws \TypeError if @newTodoAuthor is not an string
 	 **/
