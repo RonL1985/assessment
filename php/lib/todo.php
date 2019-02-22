@@ -8,13 +8,13 @@ require_once("../Classes/autoload.php");
 //	require_once(dirname(__DIR__, 1) . "/classes/todo.php");
 // use autoload via composer (PHP's package manager:
 require_once(dirname(__DIR__, 2) . "/vendor/autoload.php");
-/*
+/**
 simplified attribute names:
 	todoId
 	todoAuthor
 	todoDate
 	todoTask
-*/
+**/
 /**
  * New Todo Generator
  *
@@ -124,7 +124,7 @@ class todo {
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 		}
 		// convert and store the todo id
-		$this->todoId = $Uuid;
+		$this->todoId = $uuid;
 	}
 	/**
 	 * accessor method for todo Author
