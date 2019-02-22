@@ -1,12 +1,11 @@
 # assessment  
 ## Marching Orders
 #### Write a MySQL table in `/sql/data-design.sql` using the conceptual model below.
-* post
-  * postId (primary key)
-  * postAuthor 
-  * postBody
-  * postDate
-  * postTitle
+* todo
+  * todoId (primary key)
+  * todoAuthor 
+  * todoDate
+  * todoTask
 #### Write a class in `/php/Classes/Post.php`  based of off the MySQL create table satement from the previous step.
   * The Class must include:
     * An Insert method.
