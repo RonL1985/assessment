@@ -14,7 +14,6 @@ simplified attribute names:
 	todoAuthor
 	todoDate
 	todoTask
-
 */
 /**
  * New Todo Generator
