@@ -60,3 +60,4 @@ trait ValidateUuid {
 		return($uuid);
 	}
 }
+
